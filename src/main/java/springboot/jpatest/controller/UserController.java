@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/user/new")
     public String joinForm(){
-        return "user/joinPreForm";
+        return "user/joinForm";
     }
 
 /*    @PostMapping("/joinPre")
@@ -32,6 +32,12 @@ public class UserController {
         mv.setViewName("user/joinForm");
         return mv;
     }*/
+
+    @PostMapping("/user/new")
+    public String join(Student student){
+        studentService.save(student);
+        return "view/layout";
+    }
 
 
     @GetMapping("user/findIdPop")

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import springboot.jpatest.domain.Student;
+import springboot.jpatest.domain.User;
 import springboot.jpatest.repository.StudentRepository;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class StudentService {
     /**
      * 회원가입
      */
+
+    public void save(Student student){
+        studentRepository.save(student);
+    }
 
     /**
      * 수정

@@ -26,9 +26,9 @@ public class StudentRepository {
                 .getResultList();
     }
 
-    public List<Student> findByStID(String stID){
-        return em.createQuery("select s from Student s where s.stID = :stID",Student.class)
-                .setParameter("stID",stID)
+    public List<Student> findByStudentId(String studentId){
+        return em.createQuery("select s from Student s where s.studentId = :studentId",Student.class)
+                .setParameter("studentId",studentId)
                 .getResultList();
     }
 

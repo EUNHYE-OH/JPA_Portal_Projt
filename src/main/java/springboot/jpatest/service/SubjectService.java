@@ -24,12 +24,11 @@ public class SubjectService {
         return subjectRepository.findAll();
     }
 
-
     public Subject findOne(Long subjectId){
         return subjectRepository.findOne(subjectId);
     }
 
-    public List<Subject> findBySbjID(String sbjID){
-        return subjectRepository.findBySbjID(sbjID);
+    public List<Subject> findBySubjectCode(String subjectCode){
+        return subjectRepository.findBySubjectCode(subjectCode);
     }
 }

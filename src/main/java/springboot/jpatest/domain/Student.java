@@ -10,22 +10,21 @@ import java.util.*;
 @Getter @Setter
 public class Student extends User{
 
-    @Column(name = "stID", unique = true)
-    private String stID;
+    @Column(name = "student_id" ,unique = true)
+    private String studentId;
     private String major;
 
-    //@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    @OneToMany(mappedBy = "student")
-    private List<ClList> clLists = new ArrayList<>();
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Enroll> enrolls = new ArrayList<>();
 
     public Student() {
         super();
     }
 
-    public Student(Long id, String type, String name, String password, int birth, String gender, String address, String uploadfile, String stID, String major, List<ClList> clLists) {
+    public Student(Long id, String type, String name, String password, int birth, String gender, String address, String uploadfile, String studentId, String major, List<Enroll> enrolls) {
         super(id, type, name, password, birth, gender, address, uploadfile);
-        this.stID = stID;
+        this.studentId = studentId;
         this.major = major;
-        this.clLists = clLists;
+        this.enrolls = enrolls;
     }
 }

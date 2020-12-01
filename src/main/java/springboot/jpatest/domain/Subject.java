@@ -16,16 +16,14 @@ public class Subject {
     @Column(name = "subject_id")
     private Long id;
 
-    private String sbjID;
-    private String sbjName;
-    private int sbjCredit;
-    private String classifi;
+    private String subjectCode;
+    private String subjectName;
+    private int subjectCredit;
+    private String classification;
     private String professor;
 
-    /*@OneToMany(mappedBy = "subject")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clList_id")
-    private ClList clLists;*/
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    private List<Enroll> enroll = new ArrayList<>();
 
     //==비즈니스 로직==//
 /*    public void addSubject(Subject subject){

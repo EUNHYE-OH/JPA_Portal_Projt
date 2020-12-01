@@ -4,59 +4,48 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-public class ClList {
+public class Enroll {
+
     @Id @GeneratedValue
-    @Column(name = "clList_id")
+    @Column
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
 
-    /*@ManyToOne(fetch = FetchType.LAZY)*/
-    @OneToMany(mappedBy = "clList", cascade = CascadeType.ALL)
-    private List<ClListSubject> clListSubjects = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    private int appYear;
-    private String appSemester;
+    private int applyYear;
+    private String applySemester;
 
-    private LocalDateTime applyDate;
 
     @Enumerated(EnumType.STRING)
-    private ClListStatus status; //수강 상태 [Enrolment, Cancel]
+    private EnrollStatus status; //수강 상태 [Enrolment, Cancel]
 
     //==연관관계 메소드==//
 
     public void setStudent(Student student){
         this.student = student;
-        student.getClLists().add(this);
+        student.getEnrolls().add(this);
     }
 
-    public void addClListSubject(ClListSubject clListSubject){
-        clListSubjects.add(clListSubject);
-        clListSubject.setClList(this);
-    }
 
     //==생성 메서드==//
-    public static ClList createClList(Student student, ClListSubject... clListSubjects){
-        ClList clList = new ClList();
-        clList.setStudent(student);
-        for(ClListSubject clListSubject : clListSubjects){
-            clList.addClListSubject(clListSubject);
-        }
-        clList.setStatus(ClListStatus.Enrolment);
-        clList.setApplyDate(LocalDateTime.now());
-        return clList;
+    public static Enroll createEnroll(Student student){
+        Enroll enroll = new Enroll();
+        enroll.setStudent(student);
+        enroll.setStatus(EnrollStatus.Enrolment);
+        return enroll;
     }
 
     //==비즈니스 로직==//
@@ -76,23 +65,23 @@ public class ClList {
     /**
      * 수강 신청 6개월 후 수강완료로 변경
      */
-    public void changeStatus(){
+    /*public void changeStatus(){
         if(applyDate.getDayOfMonth() + 6 == LocalDateTime.now().getDayOfMonth()){
-            this.setStatus(ClListStatus.Completed);
+            this.setStatus(EnrollStatus.Completed);
         }
-    }
+    }*/
 
     //==조회 로직==//
 
     /**
      * 전체 수강 학점 조회
      */
-    public int getTotalCredit(){
+    /*public int getTotalCredit(){
         int totalCredit = 0;
         for(ClListSubject clListSubject : clListSubjects){
             totalCredit += clListSubject.getClListCredit();
         }
         return totalCredit;
-    }
+    }*/
 
 }

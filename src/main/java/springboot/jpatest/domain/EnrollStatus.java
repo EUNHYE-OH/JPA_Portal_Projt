@@ -1,5 +1,5 @@
 package springboot.jpatest.domain;
 
-public enum ClListStatus {
+public enum EnrollStatus {
     Enrolment, Completed, CANCEL
 }

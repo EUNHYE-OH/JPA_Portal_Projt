@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:object="${clListSearch}" class="form-inline">
+<!--<form th:object="${clListSearch}" class="form-inline">
     <div class="form-group mb-2">
         <input type="text" th:field="*{stID}" class="form-control" placeholder="학번"/>
     </div>
@@ -20,7 +20,7 @@
         </select>
     </div>
     <button type="submit">검색</button>
-</form>
+</form>-->
 <table>
     <tr>
         <td>#</td>
@@ -30,14 +30,15 @@
         <td>이수구분</td>
         <td>담당교수</td>
     </tr>
-    <tr th:each="clList : ${clLists} ">
+    <tr th:each="enroll : ${enrolls} ">
         <td>#</td>
-        <td th:text="${clList[0]}"></td>
-<!--        <td th:text="${clList.clListSubjects[0].subject.sbjID}"></td>
-        <td th:text="${clList.clListSubjects[0].subject.sbjName}"></td>
-        <td th:text="${clList.clListSubjects[0].subject.sbjCredit}"></td>
-        <td th:text="${clList.clListSubjects[0].subject.classifi}"></td>
-        <td th:text="${clList.clListSubjects[0].subject.professor}"></td>-->
+        <td th:text="${enroll}"></td>
+        <!-- <td th:text="${clList.clListSubjects[1].subject.sbjID}"></td>
+         <td th:text="${clList.clListSubjects[0].subject.sbjID}"></td>
+         <td th:text="${clList.clListSubjects[0].subject.sbjName}"></td>
+         <td th:text="${clList.clListSubjects[0].subject.sbjCredit}"></td>
+         <td th:text="${clList.clListSubjects[0].subject.classifi}"></td>
+         <td th:text="${clList.clListSubjects[0].subject.professor}"></td>-->
     </tr>
 </table>
 </body>

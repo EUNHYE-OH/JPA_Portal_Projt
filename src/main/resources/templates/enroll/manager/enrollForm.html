@@ -6,12 +6,12 @@
 </head>
 <body>
 <!--관리자가 수강신청해주는 페이지-->
-<form role = "form" action="/manager/clList" method="post">
+<form role = "form" action="/manager/enroll" method="post">
     <select name="studentId" id="student">
     <option value="">학번</option>
         <option th:each ="student: ${students}"
                 th:value="${student.id}"
-                th:text="${student.stID}"
+                th:text="${student.studentId}"
         />
 </select>
         <table>
@@ -25,10 +25,10 @@
             </tr>
             <tr th:each="subject : ${subjects}">
                 <td><input type="checkbox" name="subjectId" id="subject" th:value="${subject.id}"/></td>
-                <td th:text="${subject.sbjID}"></td>
-                <td th:text="${subject.sbjName}"></td>
-                <td th:text="${subject.sbjCredit}"></td>
-                <td th:text="${subject.classifi}"></td>
+                <td th:text="${subject.subjectCode}"></td>
+                <td th:text="${subject.subjectName}"></td>
+                <td th:text="${subject.subjectCredit}"></td>
+                <td th:text="${subject.classification}"></td>
                 <td th:text="${subject.professor}"></td>
              </tr>
         </table>

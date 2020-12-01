@@ -1,6 +1,7 @@
 package springboot.jpatest.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,5 +12,11 @@ public class HomeController {
     public String home(){
         return "home";
     }
+
+    @GetMapping("/address")
+    public String address(){
+        return "view/address";
+    }
+
 
 }

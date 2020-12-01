@@ -21,10 +21,10 @@
             <tbody>
             <tr th:each="subject : ${subjects}">
                 <td th:text="${subject.id}"></td>
-                <td th:text="${subject.sbjID}"></td>
-                <td th:text="${subject.sbjName}"></td>
-                <td th:text="${subject.sbjCredit}"></td>
-                <td th:text="${subject.classifi}"></td>
+                <td th:text="${subject.subjectCode}"></td>
+                <td th:text="${subject.subjectName}"></td>
+                <td th:text="${subject.subjectCredit}"></td>
+                <td th:text="${subject.classification}"></td>
                 <td th:text="${subject.professor}"></td>
                 <td>
                     <a href="#" th:href="@{/subjects/{id}/edit (id=${subject.id})}"

@@ -8,9 +8,9 @@ import lombok.Setter;
 public class SubjectForm {
 
     private Long id;
-    private String sbjID;
-    private String sbjName;
-    private int sbjCredit;
-    private String classifi;
+    private String subjectCode;
+    private String subjectName;
+    private int subjectCredit;
+    private String classification;
     private String professor;
 }

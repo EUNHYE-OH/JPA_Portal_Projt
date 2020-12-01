@@ -173,8 +173,13 @@ footer>ul:first-of-type>li>a{
     font-size: 0.8rem;
     text-decoration: none;
 }
-footer>ul:first-of-type>li>a:first-of-type{
+footer>ul:first-of-type>li>a{
     color: #98b4e8;
+}
+
+footer>ul:first-of-type>li:nth-of-type(3)>a{
+    color:violet;
+    font-weight: bold;
 }
 
 

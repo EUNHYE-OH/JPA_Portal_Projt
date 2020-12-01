@@ -11,12 +11,9 @@
     <img src="image/main.png">
 </header>
 <section>
-    <form action="join" method="get">
-        <label th:if="${type == 'S'}"> 학번
-        <input type="text" name="stID" id="stID">
-        </label>
-        <label th:if="${type == 'M'}"> 교번
-            <input type="text" name="mgID" id="mgID">
+    <form action="/user/new" method="post">
+        <label> 학번
+        <input type="text" name="studentId" id="studentId">
         </label>
         <p>에러메세지</p>
         <label for="password"> 비밀번호</label>

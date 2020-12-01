@@ -29,15 +29,16 @@ public class SubjectController {
     public String create(SubjectForm form){
         Subject subject = new Subject();
         subject.setId(form.getId());
-        subject.setSbjID(form.getSbjID());
-        subject.setSbjName(form.getSbjName());
-        subject.setSbjCredit(form.getSbjCredit());
-        subject.setClassifi(form.getClassifi());
+        subject.setSubjectCode(form.getSubjectCode());
+        subject.setSubjectName(form.getSubjectName());
+        subject.setSubjectCredit(form.getSubjectCredit());
+        subject.setClassification(form.getClassification());
         subject.setProfessor(form.getProfessor());
 
         subjectService.saveSubject(subject);
         return "redirect:/subjects";
     }
+
 
     /**
      * 과목 목록
@@ -58,10 +59,10 @@ public class SubjectController {
 
         SubjectForm form = new SubjectForm();
         form.setId(subject.getId());
-        form.setSbjID(subject.getSbjID());
-        form.setSbjName(subject.getSbjName());
-        form.setSbjCredit(subject.getSbjCredit());
-        form.setClassifi(subject.getClassifi());
+        form.setSubjectCode(subject.getSubjectCode());
+        form.setSubjectName(subject.getSubjectName());
+        form.setSubjectCredit(subject.getSubjectCredit());
+        form.setClassification(subject.getClassification());
         form.setProfessor(subject.getProfessor());
 
         model.addAttribute("form",form);
@@ -72,9 +73,10 @@ public class SubjectController {
     public String updateSubject(@ModelAttribute("form") SubjectForm form){
         Subject subject = new Subject();
         subject.setId(form.getId());
-        subject.setSbjID(form.getSbjID());
-        subject.setSbjCredit(form.getSbjCredit());
-        subject.setClassifi(form.getClassifi());
+        subject.setSubjectCode(form.getSubjectCode());
+        subject.setSubjectName(form.getSubjectName());
+        subject.setSubjectCredit(form.getSubjectCredit());
+        subject.setClassification(form.getClassification());
         subject.setProfessor(form.getProfessor());
 
         subjectService.saveSubject(subject);

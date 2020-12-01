@@ -30,9 +30,9 @@ public class SubjectRepository {
                 .getResultList();
     }
 
-    public List<Subject> findBySbjID(String sbjID){
-        return em.createQuery("select sb from Subject  sb where sb.sbjID=:sbjID",Subject.class)
-                .setParameter("sbjID", sbjID)
+    public List<Subject> findBySubjectCode(String subjectCode){
+        return em.createQuery("select sb from Subject  sb where sb.subjectCode=:subjectCode",Subject.class)
+                .setParameter("subjectCode", subjectCode)
                 .getResultList();
     }
 
