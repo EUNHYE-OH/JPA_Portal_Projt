@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<head th:fragment="nav">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+</head>
+<body>-->
+<nav id="nav" th:fragment="nav">
+    <ul>학생메뉴
+        <li><span>학적정보</span>
+            <ul>
+                <li class="hover_b" id="update">개인정보수정</li>
+                <li class="hover_b" id="infomation">학생종합정보</li>
+                <li class="hover_b" id="changeReq">학적변동신청</li>
+            </ul></li>
+        <li>수업수강
+            <ul>
+                <li class="hover_b" id="class">수강신청</li>
+                <li class="hover_b" id="classList">수강신청내역</li>
+            </ul>
+        </li>
+        <li>성적
+            <ul>
+                <li class="hover_b" id="grade">성적조회</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!--</body>-->
+</html>

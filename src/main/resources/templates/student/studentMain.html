@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:ts="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="/css/fragments/header.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+</head>
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<section>
+    <div th:replace="fragments/nav :: nav"/>
+    <article id="article">
+    </article>
+</section>
+</body>
+</html>

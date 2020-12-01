@@ -1,0 +1,39 @@
+html{
+    width: 21rem;
+    font-size: 62.5%;
+}
+
+header{
+    width: 100vw;
+    height: 4rem;
+    background-color: #566881;
+}
+
+header>h1{
+    color: #fff;
+    line-height: 4rem;
+    text-indent: 2rem;
+}
+
+section>form{
+    margin: 2rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+section>form input{
+    margin-top:1rem;
+}
+
+section>form>input:last-of-type{
+    width: 3rem;
+    margin: 1rem 5rem 0 0;
+}
+
+section>p{
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+}

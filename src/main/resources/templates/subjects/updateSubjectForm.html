@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${form}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    과목ID <input type="text" th:field="*{sbjID}">
+    과목명 <input type="text" th:field="*{sbjName}">
+    학점 <input type="text" th:field="*{sbjCredit}">
+    이수구분 <input type="text" th:field="*{classifi}">
+    담당교수 <input type="text" th:field="*{professor}">
+    <input type="submit" value="전송">
+
+</form>
+</body>
+</html>

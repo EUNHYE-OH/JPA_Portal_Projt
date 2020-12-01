@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>학사정보시스템 : 회원가입</title>
+    <link rel="stylesheet" href="css/user/joinForm.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+<header>
+    <img src="image/main.png">
+</header>
+<section>
+    <form action="join" method="get">
+        <label th:if="${type == 'S'}"> 학번
+        <input type="text" name="stID" id="stID">
+        </label>
+        <label th:if="${type == 'M'}"> 교번
+            <input type="text" name="mgID" id="mgID">
+        </label>
+        <p>에러메세지</p>
+        <label for="password"> 비밀번호</label>
+        <input type="password" name="password" id="password">
+        <p>에러메세지</p>
+        <label for="passwordCheck"> 비밀번호 재확인</label>
+        <input type="password" name="passwordCheck" id="passwordCheck">
+        <p>에러메세지</p>
+        <label for="name"> 이름</label>
+        <input type="text" name="name" id="name">
+        <p>에러메세지</p>
+        <label for="birth"> 생년월일</label>
+        <input type="text" name="birth" id="birth">
+        <p>에러메세지</p>
+        <label for="gender"> 성별</label>
+        <select name="gender" id="gender">
+            <option value="">성별</option>
+            <option value="F">여자</option>
+            <option value="M">남자</option>
+        </select>
+        <p>에러메세지</p>
+        <label for="address"> 주소</label>
+        <input type="text" name="address" id="address">
+        <p>에러메세지</p>
+        <input type="submit" name="submit" id="submit" value="전송">
+        <input type="reset" name="reset" id="reset" value="취소">
+    </form>
+</section>
+<footer>
+    <ul>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이메일무단수집거부</a></li>
+        <li><a href="#">오시는길</a></li>
+        <li><a href="#">교내전화번호</a></li>
+        <li><a href="#">학내백신다운로드</a></li>
+    </ul>
+    <div id="copyright">
+        <img src="image/hoseologo6.png">
+        <ul>
+            <li>은혜캠퍼스 충청남도 아산시 배방읍 호서로79번길20 (우)31499 TEL:041-540-5114</li>
+            <li>승빈캠퍼스 충청남도 천안시 동남구 호서대길12 (우)31066 TEL:041-560-8114</li>
+            <li>민혁캠퍼스 충청남도 천안시 배방읍 호서대길12 (우)31499 TEL:041-560-8115</li>
+            <li>COPYRIGHT(C) 2011 HOSEO UNIVERSITY. ALL RIGHT RESERVED</li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

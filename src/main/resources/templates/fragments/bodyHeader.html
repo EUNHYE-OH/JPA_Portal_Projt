@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header id="header" th:fragment="bodyHeader">
+    <div id="logo_wrap">
+        <div id="logo" class="cursor">
+            <img src="/image/logo.jpg" alt="통합정보시스템">
+        </div>
+        <img id="globalm" src="/image/globalm_btn08on.jpg"
+             alt="학생메뉴">
+    </div>
+    <div id="out_wrap">
+        <div id="timer">
+            <img src="/image/clock.jpg" alt="타이머">
+            <span id="counter"></span><input type="button" value="시간연장" onclick="counter_reset()">
+        </div>
+        <div id="logout">
+            <span>학부생 ${logName}</span>
+            <img id="logout" class="cursor" src="/image/logout_icon.gif"
+                                             alt="나가기">
+        </div>
+    </div>
+</header>
+</html>

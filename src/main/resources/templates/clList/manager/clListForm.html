@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--관리자가 수강신청해주는 페이지-->
+<form role = "form" action="/manager/clList" method="post">
+    <select name="studentId" id="student">
+    <option value="">학번</option>
+        <option th:each ="student: ${students}"
+                th:value="${student.id}"
+                th:text="${student.stID}"
+        />
+</select>
+        <table>
+            <tr>
+                <td>#</td>
+                <td>과목코드</td>
+                <td>과목명</td>
+                <td>학점</td>
+                <td>이수구분</td>
+                <td>담당교수</td>
+            </tr>
+            <tr th:each="subject : ${subjects}">
+                <td><input type="checkbox" name="subjectId" id="subject" th:value="${subject.id}"/></td>
+                <td th:text="${subject.sbjID}"></td>
+                <td th:text="${subject.sbjName}"></td>
+                <td th:text="${subject.sbjCredit}"></td>
+                <td th:text="${subject.classifi}"></td>
+                <td th:text="${subject.professor}"></td>
+             </tr>
+        </table>
+    <input type="submit" value="신청">
+</form>
+</body>
+</html>

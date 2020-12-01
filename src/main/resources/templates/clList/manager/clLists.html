@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${clListSearch}" class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" th:field="*{stID}" class="form-control" placeholder="학번"/>
+    </div>
+    <div class="form-group mx-sm-1 mb-2">
+        <select th:field="*{clListStatus}" class="form-control">
+            <option value="">수강신청상태</option>
+            <option th:each="status : ${T(springboot.jpatest.domain.ClListStatus).values()}"
+                    th:value="${status}"
+                    th:text="${status}">option
+            </option>
+        </select>
+    </div>
+    <button type="submit">검색</button>
+</form>
+<table>
+    <tr>
+        <td>#</td>
+        <td>과목ID</td>
+        <td>과목명</td>
+        <td>학점</td>
+        <td>이수구분</td>
+        <td>담당교수</td>
+    </tr>
+    <tr th:each="clList : ${clLists} ">
+        <td>#</td>
+        <td th:text="${clList[0]}"></td>
+<!--        <td th:text="${clList.clListSubjects[0].subject.sbjID}"></td>
+        <td th:text="${clList.clListSubjects[0].subject.sbjName}"></td>
+        <td th:text="${clList.clListSubjects[0].subject.sbjCredit}"></td>
+        <td th:text="${clList.clListSubjects[0].subject.classifi}"></td>
+        <td th:text="${clList.clListSubjects[0].subject.professor}"></td>-->
+    </tr>
+</table>
+</body>
+</html>

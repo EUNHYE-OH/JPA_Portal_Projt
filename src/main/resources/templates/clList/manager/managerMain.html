@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default">
+
+    <!--<link rel="stylesheet" href="css/fragments/header.css">-->
+    <!--<link rel="stylesheet" href="css/fragments/nav.css">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+</head>
+
+    <!--공통 헤더-->
+    <!--<th:block th:replace = "fragments/head :: head"/>-->
+
+<body>
+<header th:replace="/fragments/bodyHeader.html :: bodyHeader"/>
+<section>
+    <nav th:replace="/fragments/nav.html :: nav"/>
+    <article id="article">
+        ddddd
+    </article>
+</section>
+</body>
+</html>
