@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>과목입력</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/layout.css">
+    <link rel="stylesheet" href="/css/fragments/subjects/createSubjectForm.css">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var msg = [[${msg}]];
+        if(msg !=null)
+        alert(msg);
+        /*]]>*/
+    </script>
 </head>
 <body>
-<form action="/subjects/new" method="post">
-    과목코드<input type="text" name="subjectCode"><br>
-    과목명<input type="text" name="subjectName" ><br>
-    학점<input type="text" name="subjectCredit" ><br>
-    이수구분<input type="text" name="classification" ><br>
-    담당교수<input type="text" name="professor" ><br>
-    <input type="submit" value="전송">
-</form>
+<div class="container">
+    <div th:replace="fragments/manager/bodyHeader.html :: bodyHeader"></div>
+    <section>
+        <div th:replace="fragments/manager/nav.html :: nav"></div>
+        <article>
+            <h1>과목 입력</h1>
+            <form action="/subjects/new" method="post">
+                <label><span>과목코드</span>
+                    <input type="text" name="subjectCode"><br>
+                </label>
+                <label><span>과목명</span>
+                    <input type="text" name="subjectName" ><br>
+                </label>
+                <label><span>학점</span>
+                    <input type="text" name="subjectCredit" ><br>
+                </label>
+                <label><span>이수구분</span>
+                    <input type="text" name="classification" ><br>
+                </label>
+                <label><span>담당교수</span>
+                    <input type="text" name="professor" ><br>
+                </label>
+                <input type="submit" value="전송">
+            </form>
+        </article>
+    </section>
+</div>
 </body>
 </html>

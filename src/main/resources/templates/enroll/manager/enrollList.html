@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>수강 목록</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/layout.css">
+    <link rel="stylesheet" href="/css/fragments/enroll/manager/enrollList.css">
+</head>
+<body>
+<div th:replace="fragments/manager/bodyHeader.html :: bodyHeader"></div>
+<section>
+    <div th:replace="fragments/manager/nav.html :: nav"></div>
+    <article>
+        <h1>수강신청 목록</h1>
+        <form th:object="${enrollSearch}" >
+                <input type="text" th:field="*{studentId}" placeholder="학번"/>
+                <select th:field="*{enrollStatus}">
+                    <option value="">수강신청상태</option>
+                    <option th:each="status : ${T(springboot.jpatest.domain.EnrollStatus).values()}"
+                            th:value="${status}"
+                            th:text="${status}">option
+                    </option>
+                </select>
+            <button type="submit">검색</button>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>학번</th>
+                <th>과목코드</th>
+                <th>과목명</th>
+                <th>학점</th>
+                <th>이수구분</th>
+                <th>담당교수</th>
+                <th>취소</th>
+            </tr>
+            </thead>
+            <tr th:each="enroll : ${enrolls} ">
+                <td th:text="${enroll.id}"></td>
+                <td th:text="${enroll.student.studentId}"></td>
+                <td th:text="${enroll.subject.subjectCode}"></td>
+                <td th:text="${enroll.subject.subjectName}"></td>
+                <td th:text="${enroll.subject.subjectCredit}"></td>
+                <td th:text="${enroll.subject.classification}"></td>
+                <td th:text="${enroll.subject.professor}"></td>
+                <td>
+                    <a th:if="${enroll.status.name() == 'Enrolment'}" href="#"
+                       th:href="'javascript:cancel('+${enroll.id}+')'">CANCEL</a>
+                </td>
+            </tr>
+        </table>
+    </article>
+</section>
+
+</body>
+<script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/enrolls/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</html>

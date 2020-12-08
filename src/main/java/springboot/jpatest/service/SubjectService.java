@@ -3,6 +3,7 @@ package springboot.jpatest.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import springboot.jpatest.domain.Subject;
 import springboot.jpatest.repository.SubjectRepository;
 
@@ -17,9 +18,17 @@ public class SubjectService {
 
     @Transactional
     public void saveSubject(Subject subject){
-        subjectRepository.save(subject);
+           /* validateDuplicateSubject(subject);*/
+            subjectRepository.save(subject);
     }
 
+    /*private void validateDuplicateSubject(Subject subject){
+        List<Subject> findSubjects = subjectRepository.findBySubjectCode(subject.getSubjectCode());
+        if(!findSubjects.isEmpty()){
+            throw new IllegalStateException("이미 존재하는 과목 코드입니다.");
+        }
+    }
+*/
     public List<Subject> findSubjects(){
         return subjectRepository.findAll();
     }

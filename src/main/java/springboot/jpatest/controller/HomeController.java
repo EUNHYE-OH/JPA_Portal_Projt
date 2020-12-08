@@ -18,5 +18,13 @@ public class HomeController {
         return "view/address";
     }
 
+    @GetMapping("/view/studentLayout")
+    public String viewStudentLayout(){
+        return "view/studentLayout";
+    }
+    @GetMapping("/view/managerLayout")
+    public String viewManagerLayout(){
+        return "view/managerLayout";
+    }
 
 }

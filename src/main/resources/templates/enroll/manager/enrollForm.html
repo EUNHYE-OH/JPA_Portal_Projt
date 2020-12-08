@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/layout.css">
+    <link rel="stylesheet" href="/css/fragments/enroll/manager/enrollForm.css">
 </head>
 <body>
-<!--관리자가 수강신청해주는 페이지-->
-<form role = "form" action="/manager/enroll" method="post">
-    <select name="studentId" id="student">
-    <option value="">학번</option>
-        <option th:each ="student: ${students}"
-                th:value="${student.id}"
-                th:text="${student.studentId}"
-        />
-</select>
-        <table>
-            <tr>
-                <td>#</td>
-                <td>과목코드</td>
-                <td>과목명</td>
-                <td>학점</td>
-                <td>이수구분</td>
-                <td>담당교수</td>
-            </tr>
-            <tr th:each="subject : ${subjects}">
-                <td><input type="checkbox" name="subjectId" id="subject" th:value="${subject.id}"/></td>
-                <td th:text="${subject.subjectCode}"></td>
-                <td th:text="${subject.subjectName}"></td>
-                <td th:text="${subject.subjectCredit}"></td>
-                <td th:text="${subject.classification}"></td>
-                <td th:text="${subject.professor}"></td>
-             </tr>
-        </table>
-    <input type="submit" value="신청">
-</form>
+<div class="container">
+    <div th:replace="fragments/manager/bodyHeader.html :: bodyHeader"></div>
+    <section>
+        <div th:replace="fragments/manager/nav.html :: nav"></div>
+        <article>
+            <h1>수강신청</h1>
+            <!--관리자가 수강신청해주는 페이지-->
+            <form role = "form" action="/manager/enroll" method="post">
+                <select name="studentId" id="student">
+                <option value="">학번</option>
+                    <option th:each ="student: ${students}"
+                            th:value="${student.id}"
+                            th:text="${student.studentId}"/>
+            </select>
+                <input type="submit" value="신청">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>과목코드</th>
+                            <th>과목명</th>
+                            <th>학점</th>
+                            <th>이수구분</th>
+                            <th>담당교수</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="subject : ${subjects}">
+                            <td><input type="checkbox" name="subjects" id="subject" th:value="${subject.id}"/></td>
+                            <td th:text="${subject.subjectCode}"></td>
+                            <td th:text="${subject.subjectName}"></td>
+                            <td th:text="${subject.subjectCredit}"></td>
+                            <td th:text="${subject.classification}"></td>
+                            <td th:text="${subject.professor}"></td>
+                         </tr>
+                    </table>
+            </form>
+        </article>
+    </section>
+</div>
 </body>
 </html>

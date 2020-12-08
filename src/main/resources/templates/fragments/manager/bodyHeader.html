@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header id="header" th:fragment="bodyHeader">
+    <div id="logo_wrap">
+        <div id="logo">
+            <img src="/image/logo.jpg" alt="통합정보시스템">
+        </div>
+        <img id="globalm" src="/image/manage_btn08on.png" alt="관리자메뉴">
+    </div>
+    <div id="out_wrap">
+        <div id="timer">
+            <img src="/image/clock.jpg" alt="타이머">
+            <span id="counter"></span><input type="button" value="시간연장" onclick="counter_reset()">
+        </div>
+        <div id="logout">
+            <span>관리자</span>
+            <img src="/image/logout_icon.gif" alt="나가기">
+        </div>
+    </div>
+</header>
+</html>

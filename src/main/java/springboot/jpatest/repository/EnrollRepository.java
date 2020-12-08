@@ -26,10 +26,10 @@ public class EnrollRepository {
     public Enroll findOne(Long id){
         return em.find(Enroll.class,id);
     }
-
+/*
     public List<Enroll> findAllByString(EnrollSearch enrollSearch){
         //JPQL
-        String jpql = "select c From Enroll c join c.student s";
+        String jpql = "select e From Enroll e join e.student s";
         boolean isFirstCondition = true;
 
         //수강 상태 검색
@@ -40,7 +40,7 @@ public class EnrollRepository {
             }else{
                 jpql += " and";
             }
-            jpql += " c.status = :status";
+            jpql += " e.status = :status";
         }
 
         //학번 검색
@@ -51,7 +51,7 @@ public class EnrollRepository {
             }else{
                 jpql += " add";
             }
-            jpql += " s.stID like :stID";
+            jpql += " s.studentId like :studentId";
         }
 
         TypedQuery<Enroll> query = em.createQuery(jpql, Enroll.class)
@@ -63,26 +63,26 @@ public class EnrollRepository {
             query = query.setParameter("studentId", enrollSearch.getStudentId());
         }
         return query.getResultList();
-    }
+    }*/
 
     public List<Enroll> findAllByCriteria(EnrollSearch enrollSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Enroll> cq = cb.createQuery(Enroll.class);
-        Root<Enroll> c = cq.from(Enroll.class);
-        Join<Enroll, Student> s = c.join("student", JoinType.INNER); //학생과 조인
+        Root<Enroll> e = cq.from(Enroll.class);
+        Join<Enroll, Student> s = e.join("student", JoinType.INNER); //학생과 조인
         List<Predicate> criteria = new ArrayList<>();
         //수강 신청 상태 검색
         if (enrollSearch.getEnrollStatus() != null) {
-            Predicate status = cb.equal(c.get("status"),
+            Predicate status = cb.equal(e.get("status"),
                     enrollSearch.getEnrollStatus());
             criteria.add(status);
         }
         //학번 검색
         if (StringUtils.hasText(enrollSearch.getStudentId())) {
-            Predicate stID =
+            Predicate studentId =
                     cb.like(s.<String>get("studentId"), "%" +
                             enrollSearch.getStudentId() + "%");
-            criteria.add(stID);
+            criteria.add(studentId);
         }
         cq.where(cb.and(criteria.toArray(new Predicate[criteria.size()])));
         TypedQuery<Enroll> query = em.createQuery(cq).setMaxResults(1000); //최대1000건
@@ -93,8 +93,7 @@ public class EnrollRepository {
         return em.createQuery(
                 "select distinct e from Enroll e" +
                         " join fetch e.student s " +
-                        " join fetch e.clListSubjects cs" +
-                        " join fetch cs.subject sb", Enroll.class)
+                        " join fetch e.subject sb", Enroll.class)
                 .getResultList();
     }
 

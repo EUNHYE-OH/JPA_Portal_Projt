@@ -17,11 +17,11 @@ public class Enroll {
     @Column
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
     private Student student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
@@ -41,9 +41,10 @@ public class Enroll {
 
 
     //==생성 메서드==//
-    public static Enroll createEnroll(Student student){
+    public static Enroll createEnroll(Student student, Subject subject){
         Enroll enroll = new Enroll();
         enroll.setStudent(student);
+        enroll.setSubject(subject);
         enroll.setStatus(EnrollStatus.Enrolment);
         return enroll;
     }
@@ -52,15 +53,12 @@ public class Enroll {
     /**
      * 수강 철회
      */
- /*   public void cancel(){
-        if(ClListStatus.Completed == getStatus()){
+  public void cancel(){
+        if(EnrollStatus.Completed == getStatus()){
             throw new IllegalStateException("이미 수강 완료된 강의입니다.");
         }
-        this.setStatus(ClListStatus.CANCEL);
-        for(ClListSubject clListSubject : clListSubjects){
-            clListSubject.cancel();
-        }
-    }*/
+        this.setStatus(EnrollStatus.CANCEL);
+    }
 
     /**
      * 수강 신청 6개월 후 수강완료로 변경

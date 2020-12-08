@@ -1,39 +1,50 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <meta charset="UTF-8">
+    <title>과목 목록</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/layout.css">
+    <link rel="stylesheet" href="/css/fragments/subjects/subjectList.css">
 </head>
 <body>
 <div class="container">
-    <div th:replace="fragments/bodyHeader :: header"/>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>과목ID</th>
-                <th>과목명</th>
-                <th>학점</th>
-                <th>이수구분</th>
-                <th>담당교수</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="subject : ${subjects}">
-                <td th:text="${subject.id}"></td>
-                <td th:text="${subject.subjectCode}"></td>
-                <td th:text="${subject.subjectName}"></td>
-                <td th:text="${subject.subjectCredit}"></td>
-                <td th:text="${subject.classification}"></td>
-                <td th:text="${subject.professor}"></td>
-                <td>
-                    <a href="#" th:href="@{/subjects/{id}/edit (id=${subject.id})}"
-                       class="btn btn-primary" role="button">수정</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <div th:replace="fragments/manager/bodyHeader.html :: bodyHeader"></div>
+    <section>
+        <div th:replace="fragments/manager/nav.html :: nav"></div>
+        <article>
+            <h1>과목 목록</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>과목ID</th>
+                        <th>과목명</th>
+                        <th>학점</th>
+                        <th>이수구분</th>
+                        <th>담당교수</th>
+                        <th>수정</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="subject : ${subjects}">
+                        <td th:text="${subject.id}"></td>
+                        <td th:text="${subject.subjectCode}"></td>
+                        <td th:text="${subject.subjectName}"></td>
+                        <td th:text="${subject.subjectCredit}"></td>
+                        <td th:text="${subject.classification}"></td>
+                        <td th:text="${subject.professor}"></td>
+                        <td>
+                            <a href="#" th:href="@{/subjects/{id}/edit (id=${subject.id})}"
+                               role="button">수정</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </article>
+    </section>
 </div> <!-- /container -->
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<script th:src="@{/jqLib/jquery-3.2.1.min.js}"></script>
+<nav id="nav" th:fragment="nav">
+    <ul>관리자메뉴
+        <li><span>과목</span>
+            <ul>
+                <li class="hover_b"><a th:href="@{/subjects/new}">과목입력</a></li>
+                <li class="hover_b"><a th:href="@{/subjects}">과목목록</a></li>
+            </ul>
+        </li>
+        <li>학생
+            <ul>
+                <li class="hover_b"><a th:href="@{/manager/enroll}">수강신청</a></li>
+                <li class="hover_b"><a th:href="@{/manager/enrolls}">수강신청 목록</a></li>
+            </ul>
+        </li>
+        <li>졸업요건
+            <ul>
+                <li class="hover_b">졸업승인</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+</html>

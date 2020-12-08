@@ -2,18 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>과목 수정</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/fragments/bodyHeader.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/layout.css">
+    <link rel="stylesheet" href="/css/fragments/subjects/updateSubjectForm.css">
 </head>
 <body>
-<form th:object="${form}" method="post">
-    <input type="hidden" th:field="*{id}"/>
-    과목ID <input type="text" th:field="*{subjectCode}">
-    과목명 <input type="text" th:field="*{subjectName}">
-    학점 <input type="text" th:field="*{subjectCredit}">
-    이수구분 <input type="text" th:field="*{classification}">
-    담당교수 <input type="text" th:field="*{professor}">
-    <input type="submit" value="전송">
-
-</form>
+<div class="container">
+    <div th:replace="fragments/manager/bodyHeader.html :: bodyHeader"></div>
+    <section>
+        <div th:replace="fragments/manager/nav.html :: nav"></div>
+        <article>
+            <h1>과목 수정</h1>
+            <form th:object="${form}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+            <label>
+                과목ID <input type="text" th:field="*{subjectCode}"><br>
+            </label>
+                <label>
+                 과목명 <input type="text" th:field="*{subjectName}"><br>
+                </label>
+                <label>
+                    학점 <input type="text" th:field="*{subjectCredit}"><br>
+                </label>
+                <label>
+                 이수구분 <input type="text" th:field="*{classification}"><br>
+                </label>
+                <label>
+                    담당교수 <input type="text" th:field="*{professor}"><br>
+                </label>
+                <input type="submit" value="전송">
+            </form>
+        </article>
+    </section>
+</div> <!-- /container -->
 </body>
 </html>

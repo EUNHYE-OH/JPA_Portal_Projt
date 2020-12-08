@@ -3,9 +3,7 @@ package springboot.jpatest.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import springboot.jpatest.domain.*;
 import springboot.jpatest.service.EnrollService;
 import springboot.jpatest.service.StudentService;
@@ -35,29 +33,32 @@ public class EnrollController {
     }
 
     @PostMapping("/manager/enroll")
-    public String clList(@RequestParam("studentId") Long studentId,
-                         @RequestParam("subjectId") Long subjectId){
-        enrollService.enroll(studentId,subjectId);
+    public String enroll(@RequestParam("studentId") Long studentId,
+                         @RequestParam("subjects") Long subjects){
+        enrollService.enroll(studentId,subjects);
         return "redirect:/manager/enrolls";
     }
 
-/*    검색 > 리스트
-    @GetMapping("/manager/clLists")
-    public String managerClLists(@ModelAttribute("clListSearch")ClListSearch clListSearch, Model model){
-        List<ClList> clLists = clListService.findClLists(clListSearch);
-       *//* for(ClList clList : clLists){
-            for(ClListSubject clListSubject : clList.getClListSubjects()){
-                clListSubject.setSubject(clListSubject.getSubject());
-            }
-        }*//*
-        model.addAttribute("clLists", clLists);
-        return "clList/manager/clLists";
-    }*/
-
+    /*검색 > 리스트*/
     @GetMapping("/manager/enrolls")
+    public String managerEnrolls(@ModelAttribute("enrollSearch")EnrollSearch enrollSearch, Model model){
+        List<Enroll> enrolls = enrollService.findEnrolls(enrollSearch);
+        model.addAttribute("enrolls", enrolls);
+        return "enroll/manager/enrollList";
+    }
+/*    @GetMapping("/manager/enrolls")
     public String managerEnrolls(Model model){
         List<Enroll> enrolls = enrollService.findAllWithSubject();
         model.addAttribute("enrolls", enrolls);
         return "enroll/manager/enrolls";
+    }*/
+
+    /**
+     * 취소
+     */
+    @PostMapping("/enrolls/{enrollId}/cancel")
+    public String cancelEnroll(@PathVariable("enrollId") Long enrollId){
+        enrollService.cancelEnroll(enrollId);
+        return "redirect:/manager/enrolls";
     }
 }

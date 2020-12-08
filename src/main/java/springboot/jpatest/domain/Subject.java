@@ -21,6 +21,7 @@ public class Subject {
     private int subjectCredit;
     private String classification;
     private String professor;
+    private String[] subjects;
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     private List<Enroll> enroll = new ArrayList<>();

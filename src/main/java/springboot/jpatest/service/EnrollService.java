@@ -29,7 +29,7 @@ public class EnrollService {
 
 
         //수강 생성
-        Enroll enroll = Enroll.createEnroll(student);
+        Enroll enroll = Enroll.createEnroll(student, subject);
 
         //수강 저장
         enrollRepository.save(enroll);
@@ -45,6 +45,8 @@ public class EnrollService {
         Enroll enroll = enrollRepository.findOne(enrollId);
 
         //철회하는 로직
+        enroll.cancel();
+
     }
 
     /**
@@ -57,4 +59,18 @@ public class EnrollService {
     public List<Enroll> findAllWithSubject(){
         return enrollRepository.findAllWithSubject();
     }
+
+    /*@Transactional
+    public List<Enroll> searchPosts(String keyword){
+        List<Enroll> enrolls = enrollInterfaceRepository.findByTitleContaining(keyword);
+        List<Enroll> enrollList = new ArrayList<>();
+
+        if(enrolls.isEmpty()) return enrollList;
+        for(Enroll enroll : enrolls){
+            enrollList.add(this.);
+        }
+        return enrollList;
+    }
+
+    private Enroll*/
 }

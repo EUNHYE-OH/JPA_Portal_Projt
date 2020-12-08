@@ -26,17 +26,21 @@ public class SubjectController {
     }
 
     @PostMapping("/subjects/new")
-    public String create(SubjectForm form){
-        Subject subject = new Subject();
-        subject.setId(form.getId());
-        subject.setSubjectCode(form.getSubjectCode());
-        subject.setSubjectName(form.getSubjectName());
-        subject.setSubjectCredit(form.getSubjectCredit());
-        subject.setClassification(form.getClassification());
-        subject.setProfessor(form.getProfessor());
-
-        subjectService.saveSubject(subject);
-        return "redirect:/subjects";
+    public String create(SubjectForm form, String subjectCode, Model model){
+        if(subjectService.findBySubjectCode(subjectCode).isEmpty()) {
+            Subject subject = new Subject();
+            subject.setId(form.getId());
+            subject.setSubjectCode(form.getSubjectCode());
+            subject.setSubjectName(form.getSubjectName());
+            subject.setSubjectCredit(form.getSubjectCredit());
+            subject.setClassification(form.getClassification());
+            subject.setProfessor(form.getProfessor());
+            subjectService.saveSubject(subject);
+            return "redirect:/subjects";
+        }else{
+            model.addAttribute("msg","이미 존재하는 과목코드입니다.");
+            return "subjects/createSubjectForm";
+        }
     }
 
 
