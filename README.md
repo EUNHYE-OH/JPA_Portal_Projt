@@ -6,5 +6,5 @@
   Spring Boot + JPA + Tymeleaf + Gradle + MySql + InteliJ
   
   ## 발표자료
-   대학교 포털사이트 구현하기 ver_02.pdf
+   오은혜_대학교 포털사이트 구현하기 ver_02.pdf
   
